@@ -1,0 +1,82 @@
+= TEIID Translator Arche Type
+
+This maven project is use to create the TEIID Translator archetype, which then can be used to generate a new translator project.
+
+When the translator project is generated, you will end up with the following structure:
+----
+  translator-${translator-name}
+	| -	pom.xml
+	| -	src
+		|-	main
+			|-	java
+				|-	${package}
+					|-	${translator-name}Execution.java
+					|-	${translator-name}ExecutionFactory.java
+					|-	${translator-name}Plugin.java
+			|-	resources
+				|-	${package}
+						|-	i18n.properties
+				|-	META-INF
+					|-	services
+						|-	org.teiid.translator.ExecutionFactory
+
+----
+
+== Install Arche Type
+
+To package and install the arche type, run:
+
+----
+$ mvn clean install 
+----
+
+== Generate Project
+
+After the arche type is installed, then to generate a translator project, do the following:
+
+*  'cd' into the teiid/connectors directory (assuming you have checked out teiid from github) or to the
+	location you want the connector project created
+*  run the following:
+
+----
+$ /dir_to/teiid/connectors
+$ mvn archetype:generate                                 \
+  -DarchetypeGroupId=org.jboss.teiid.arche-types               \
+  -DarchetypeArtifactId=translator-archetype          \
+  -DarchetypeVersion=8.7.0               \
+  -DgroupId=${groupId}   				\
+  -DartifactId=translator-${translator-name}	\
+  -Dpackage=org.teiid.translator.${translator-name}    \
+  -Dversion=8.7.0.Alpha2-SNAPSHOT    \
+  -Dtranslator-name=${translator-name}   
+----
+
+=== Archetype Definitions
+
+----
+  -DarchetypeGroupId    -  is the group ID for the arche type to use to generate
+  -DarchetypeArtifactId -  is the artifact ID for the arche type to use to generate
+  -DarchetypeVersion	-  is the version for the arche type to use to generate
+  -DgroupId		-  (user defined) group ID for the new translator project pom.xml
+  -DartifactId		-  (user defined) artifact ID for the new translator project pom.xml
+  -Dpackage		-  (user defined) the package structure where the java and resource files will be created
+  -Dversion		-  (user defined) the Teiid version that the new translator project pom.xml will depend on
+  -Dtranslator-name	-  (user defined) the name (type) of the new translator project, used to create the java class names
+----
+
+=== Example
+
+----
+$ mvn archetype:generate   -s ../teiid/settings.xml                               \
+  -DarchetypeGroupId=org.jboss.teiid.arche-types               \
+  -DarchetypeArtifactId=translator-archetype          \
+  -DarchetypeVersion=8.7.0   	\
+  -DgroupId=org.jboss.teiid.connectors  	\
+  -DartifactId=translator-couchdb	\
+  -Dpackage=org.teiid.translator.couchdb    \
+  -Dversion=8.7.0.Alpha2-SNAPSHOT	\
+  -Dtranslator-name=couchdb  
+----
+
+
+

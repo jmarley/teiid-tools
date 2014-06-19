@@ -74,11 +74,11 @@ $ mvn archetype:generate     -                             \
   -DarchetypeArtifactId=connector-archetype          \
   -DarchetypeVersion=8.7.0   	\
   -DgroupId=org.jboss.teiid.connectors   	\
-  -Dpackage=org.teiid.resource.adapter.myType    \
-  -DartifactId=connector-myType	\
+  -Dpackage=org.teiid.resource.adapter.couchdb    \
+  -DartifactId=connector-couchdb	\
   -Dversion=8.7.0.Alpha2-SNAPSHOT    \
-  -Dconnector-name=myType   \
-  -Dvendor-name=MyVendor
+  -Dconnector-name=couchdb   \
+  -Dvendor-name=Apache
 
 Confirm properties configuration:
 groupId: org.jboss.teiid.connectors
