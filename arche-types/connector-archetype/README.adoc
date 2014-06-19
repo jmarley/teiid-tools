@@ -90,17 +90,4 @@ vendor-name: MyVendor
  Y: :
 ----
 
-When executed, you will be asked to confirm the package property
-
-Confirm properties configuration:
-groupId: org.jboss.teiid.connectors
-artifactId: connector-myType
-version: 8.7.0.Alpha2-SNAPSHOT
-package: org.teiid.resource.adapter.myType
-connector-name: myType
-vendor-name: MyVendor
- Y: : 
-
-
-type Y (yes) and press enter, and the creation of the translator project will be done
 
